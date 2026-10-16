@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" font-family="Segoe UI, Arial, sans-serif">
+  <title>Диктофон на ESP32-S3-Zero: схема подключения</title>
+  <style>
+    .w { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .v33 { stroke: #d32f2f; }
+    .v5 { stroke: #ef6c00; }
+    .gnd { stroke: #263238; }
+    .i2s { stroke: #1565c0; }
+    .spi { stroke: #2e7d32; }
+    .btn { stroke: #7b1fa2; }
+    .pin { fill: #d4a94f; stroke: #8a6a20; stroke-width: 1.5; }
+    .hole { fill: #20242a; }
+    .lbl { font-size: 13px; fill: #ffffff; font-weight: 600; }
+    .t { font-size: 13px; fill: #263238; }
+    .s { font-size: 11px; fill: #546e7a; }
+    .h { font-size: 15px; font-weight: 700; fill: #263238; }
+    .wl { font-size: 12px; font-weight: 700; }
+  </style>
+  <defs>
+    <g id="g">
+      <line x1="0" y1="0" x2="0" y2="12" stroke="#263238" stroke-width="3"/>
+      <line x1="-12" y1="12" x2="12" y2="12" stroke="#263238" stroke-width="3"/>
+      <line x1="-8" y1="18" x2="8" y2="18" stroke="#263238" stroke-width="3"/>
+      <line x1="-4" y1="24" x2="4" y2="24" stroke="#263238" stroke-width="3"/>
+    </g>
+    <g id="f33">
+      <rect x="0" y="-10" width="46" height="20" rx="4" fill="#d32f2f"/>
+      <text x="23" y="5" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">3V3</text>
+    </g>
+  </defs>
+
+  <rect width="1400" height="900" fill="#ffffff"/>
+
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#263238">Диктофон на ESP32-S3-Zero — схема подключения</text>
+  <text x="40" y="68" class="t">INMP441 · microSD-модуль 3,3 В · кнопка BOOT на плате · съёмный модуль питания: TP4056 + Li-Po 800 мА·ч + диод 1N5818</text>
+
+  <!-- ================= Платы ================= -->
+
+  <!-- ESP32-S3-Zero, вид сверху, USB вниз -->
+  <rect x="566" y="226" width="268" height="370" rx="14" fill="#1f3f8a" stroke="#152c63" stroke-width="2"/>
+  <rect x="670" y="238" width="60" height="16" rx="2" fill="#d9534f"/>
+  <rect x="662" y="307" width="76" height="76" rx="4" fill="#1b1b1b" transform="rotate(45 700 345)"/>
+  <text x="700" y="425" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">ESP32-S3-Zero</text>
+  <text x="700" y="443" text-anchor="middle" font-size="11" fill="#c5cae9">вид сверху, USB вниз</text>
+  <rect x="642" y="496" width="28" height="20" rx="3" fill="#cfd8dc"/>
+  <circle cx="656" cy="506" r="5" fill="#455a64"/>
+  <text x="656" y="534" text-anchor="middle" font-size="11" fill="#ffffff">R</text>
+  <rect x="730" y="496" width="28" height="20" rx="3" fill="#cfd8dc"/>
+  <circle cx="744" cy="506" r="5" fill="#455a64"/>
+  <text x="744" y="534" text-anchor="middle" font-size="11" fill="#ffffff">B</text>
+  <rect x="655" y="556" width="90" height="50" rx="9" fill="#cfd3d6" stroke="#8d9399" stroke-width="1.5"/>
+  <rect x="668" y="574" width="64" height="14" rx="7" fill="#5f6368"/>
+  <text x="700" y="628" text-anchor="middle" class="s">USB-C ESP: прошивка и питание от компьютера</text>
+
+  <!-- microSD-модуль (повёрнут, пины в порядке платы) -->
+  <rect x="150" y="312" width="196" height="236" rx="6" fill="#1d5fa8" stroke="#154a85" stroke-width="2"/>
+  <rect x="162" y="352" width="96" height="158" rx="4" fill="#c9ccd1" stroke="#8a8f96"/>
+  <text transform="translate(214 431) rotate(-90)" text-anchor="middle" font-size="13" fill="#5f6368">microSD</text>
+  <text x="248" y="572" text-anchor="middle" class="h">microSD-модуль</text>
+  <text x="248" y="590" text-anchor="middle" class="s">только 3,3 В · повёрнут, пины в том же порядке, что на плате</text>
+
+  <!-- INMP441, вид со стороны надписей, повёрнут на 180° -->
+  <circle cx="1062" cy="304" r="100" fill="#1a1a1a" stroke="#555555" stroke-width="2"/>
+  <circle cx="1062" cy="304" r="6" fill="#4a4a4a" stroke="#bdbdbd" stroke-width="1.5"/>
+  <text x="1062" y="328" text-anchor="middle" font-size="10" fill="#bdbdbd">отверстие</text>
+  <text x="1062" y="128" text-anchor="middle" class="h">INMP441 — микрофон</text>
+  <text x="1062" y="146" text-anchor="middle" class="s">вид со стороны надписей, повёрнут на 180°</text>
+  <text x="1062" y="162" text-anchor="middle" class="s">отверстием к источнику звука, не закрывать и не заливать флюсом</text>
+
+  <!-- Съёмный модуль питания -->
+  <rect x="950" y="632" width="442" height="236" rx="12" fill="#fafafa" stroke="#90a4ae" stroke-width="2" stroke-dasharray="9 6"/>
+  <text x="1171" y="656" text-anchor="middle" class="h">Автономный модуль питания (снимается)</text>
+  <text x="1171" y="674" text-anchor="middle" class="s">TP4056 с защитой, Li-Po на двустороннем скотче, диод в проводе OUT+</text>
+
+  <rect x="1110" y="700" width="160" height="100" rx="6" fill="#2b5797" stroke="#1e3f6f" stroke-width="2"/>
+  <rect x="1160" y="788" width="60" height="24" rx="6" fill="#cfd3d6" stroke="#8d9399" stroke-width="1.5"/>
+  <rect x="1170" y="795" width="40" height="10" rx="5" fill="#5f6368"/>
+  <text x="1190" y="744" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">TP4056</text>
+  <text x="1190" y="760" text-anchor="middle" font-size="10" fill="#c5cae9">DW01A · 8205A</text>
+  <text x="1190" y="832" text-anchor="middle" class="s">USB-C модуля — только зарядка</text>
+  <text x="1190" y="848" text-anchor="middle" class="s">Rprog 2–2,4 кОм → ≈0,5 А (обычно стоит 1,2 кОм = 1 А)</text>
+
+  <rect x="1298" y="700" width="86" height="100" rx="8" fill="#eceff1" stroke="#90a4ae" stroke-width="2"/>
+  <text x="1341" y="738" text-anchor="middle" class="h">Li-Po</text>
+  <text x="1341" y="758" text-anchor="middle" class="t">3,7 В</text>
+  <text x="1341" y="776" text-anchor="middle" class="t">800 мА·ч</text>
+  <text x="1284" y="722" text-anchor="middle" font-size="14" font-weight="700" fill="#d32f2f">+</text>
+  <text x="1284" y="762" text-anchor="middle" font-size="14" font-weight="700" fill="#263238">−</text>
+
+  <!-- ================= Провода ================= -->
+
+  <!-- SPI: SD-модуль → ESP 10…13 -->
+  <path class="w spi" d="M330 376 H578"/>
+  <path class="w spi" d="M330 412 H578"/>
+  <path class="w spi" d="M330 448 H578"/>
+  <path class="w spi" d="M330 484 H578"/>
+  <text x="455" y="370" text-anchor="middle" class="wl" fill="#2e7d32">CS</text>
+  <text x="455" y="406" text-anchor="middle" class="wl" fill="#2e7d32">MOSI</text>
+  <text x="455" y="442" text-anchor="middle" class="wl" fill="#2e7d32">CLK</text>
+  <text x="455" y="478" text-anchor="middle" class="wl" fill="#2e7d32">MISO</text>
+
+  <!-- Питание SD-модуля -->
+  <path class="w v33" d="M330 340 H372"/>
+  <use href="#f33" x="372" y="340"/>
+  <path class="w gnd" d="M330 520 H372"/>
+  <use href="#g" x="372" y="520"/>
+
+  <!-- I2S: ESP 6, 5, 4 → микрофон -->
+  <path class="w i2s" d="M822 304 H990"/>
+  <path class="w i2s" d="M822 340 H990"/>
+  <path class="w i2s" d="M822 268 H850 V180 H1290 V340 H1134"/>
+  <text x="905" y="297" text-anchor="middle" class="wl" fill="#1565c0">WS</text>
+  <text x="905" y="333" text-anchor="middle" class="wl" fill="#1565c0">SCK</text>
+  <text x="1226" y="200" text-anchor="middle" class="wl" fill="#1565c0">SD (данные)</text>
+
+  <!-- Перемычка L/R → GND на модуле микрофона -->
+  <path class="w" stroke="#b0bec5" d="M990 268 V240 H1134 V268"/>
+  <text x="1062" y="234" text-anchor="middle" font-size="10" fill="#cfd8dc">перемычка L/R–GND</text>
+
+  <!-- Питание микрофона -->
+  <path class="w v33" d="M1134 304 H1172"/>
+  <use href="#f33" x="1172" y="304"/>
+  <path class="w gnd" d="M1134 268 H1252"/>
+  <use href="#g" x="1252" y="268"/>
+
+  <!-- Кнопка записи — BOOT на самой плате (GPIO0), внешней кнопки нет -->
+  <circle cx="744" cy="506" r="17" fill="none" stroke="#7b1fa2" stroke-width="3"/>
+  <path class="w btn" d="M757 495 L842 452 H868"/>
+  <text x="874" y="448" class="wl" fill="#7b1fa2">кнопка записи = BOOT на плате (GPIO0)</text>
+  <text x="874" y="466" class="s">отдельную кнопку не паять; не держать BOOT при включении и RESET</text>
+
+  <!-- 3V3 ESP -->
+  <path class="w v33" d="M822 484 H856"/>
+  <use href="#f33" x="856" y="484"/>
+
+  <!-- Разъём модуля питания на штырьках GND и 5V -->
+  <text x="940" y="530" class="wl" fill="#263238">разъём Dupont 2 pin на штырьках GND и 5V</text>
+  <text x="940" y="548" class="s">модуль питания снимается; «+» строго к 5V, перевёрнутый разъём сожжёт ESP</text>
+
+  <!-- GND ESP → OUT− -->
+  <path class="w gnd" d="M884 520 H925 V730 H1110"/>
+
+  <!-- 5V ESP ← диод ← OUT+ -->
+  <path class="w v5" d="M884 556 H900 V770 H985"/>
+  <line x1="990" y1="757" x2="990" y2="783" stroke="#263238" stroke-width="3"/>
+  <path d="M1035 757 L1035 783 L992 770 Z" fill="#263238"/>
+  <path class="w v5" d="M1035 770 H1110"/>
+  <text x="1012" y="752" text-anchor="middle" font-size="13" font-weight="700" fill="#263238">1N5818</text>
+  <text x="1012" y="798" text-anchor="middle" class="s">полоска → к ESP</text>
+
+  <!-- Аккумулятор → B+ / B− -->
+  <path class="w" stroke="#d32f2f" d="M1270 730 H1298"/>
+  <path class="w gnd" d="M1270 770 H1298"/>
+
+  <!-- ================= Пины (поверх проводов) ================= -->
+
+  <g class="pin">
+    <circle cx="578" cy="268" r="10"/><circle cx="578" cy="304" r="10"/><circle cx="578" cy="340" r="10"/>
+    <circle cx="578" cy="376" r="10"/><circle cx="578" cy="412" r="10"/><circle cx="578" cy="448" r="10"/>
+    <circle cx="578" cy="484" r="10"/><circle cx="578" cy="520" r="10"/><circle cx="578" cy="556" r="10"/>
+    <circle cx="822" cy="268" r="10"/><circle cx="822" cy="304" r="10"/><circle cx="822" cy="340" r="10"/>
+    <circle cx="822" cy="376" r="10"/><circle cx="822" cy="412" r="10"/><circle cx="822" cy="448" r="10"/>
+    <circle cx="822" cy="484" r="10"/>
+    <rect x="828" y="516" width="28" height="8"/><rect x="828" y="552" width="28" height="8"/>
+    <circle cx="822" cy="520" r="10"/><circle cx="822" cy="556" r="10"/>
+    <rect x="322" y="332" width="16" height="16"/>
+    <circle cx="330" cy="376" r="8"/><circle cx="330" cy="412" r="8"/><circle cx="330" cy="448" r="8"/>
+    <circle cx="330" cy="484" r="8"/><circle cx="330" cy="520" r="8"/>
+    <circle cx="990" cy="268" r="9"/><circle cx="990" cy="304" r="9"/><circle cx="990" cy="340" r="9"/>
+    <circle cx="1134" cy="268" r="9"/><circle cx="1134" cy="304" r="9"/><circle cx="1134" cy="340" r="9"/>
+    <rect x="1104" y="722" width="12" height="16"/><rect x="1104" y="762" width="12" height="16"/>
+    <rect x="1264" y="722" width="12" height="16"/><rect x="1264" y="762" width="12" height="16"/>
+  </g>
+  <g class="hole">
+    <circle cx="578" cy="268" r="4"/><circle cx="578" cy="304" r="4"/><circle cx="578" cy="340" r="4"/>
+    <circle cx="578" cy="376" r="4"/><circle cx="578" cy="412" r="4"/><circle cx="578" cy="448" r="4"/>
+    <circle cx="578" cy="484" r="4"/><circle cx="578" cy="520" r="4"/><circle cx="578" cy="556" r="4"/>
+    <circle cx="822" cy="268" r="4"/><circle cx="822" cy="304" r="4"/><circle cx="822" cy="340" r="4"/>
+    <circle cx="822" cy="376" r="4"/><circle cx="822" cy="412" r="4"/><circle cx="822" cy="448" r="4"/>
+    <circle cx="822" cy="484" r="4"/>
+    <circle cx="330" cy="340" r="3.5"/><circle cx="330" cy="376" r="3.5"/><circle cx="330" cy="412" r="3.5"/>
+    <circle cx="330" cy="448" r="3.5"/><circle cx="330" cy="484" r="3.5"/><circle cx="330" cy="520" r="3.5"/>
+    <circle cx="990" cy="268" r="3.5"/><circle cx="990" cy="304" r="3.5"/><circle cx="990" cy="340" r="3.5"/>
+    <circle cx="1134" cy="268" r="3.5"/><circle cx="1134" cy="304" r="3.5"/><circle cx="1134" cy="340" r="3.5"/>
+  </g>
+  <!-- Корпус разъёма, надетый на штырьки -->
+  <rect x="856" y="504" width="28" height="68" rx="3" fill="#212121"/>
+  <rect x="864" y="514" width="12" height="12" fill="#9e9e9e"/>
+  <rect x="864" y="550" width="12" height="12" fill="#9e9e9e"/>
+  <text x="870" y="590" text-anchor="middle" font-size="15" font-weight="700" fill="#d32f2f">+</text>
+
+  <!-- Подписи пинов ESP (как на плате) -->
+  <g class="lbl">
+    <text x="596" y="273">7</text><text x="596" y="309">8</text><text x="596" y="345">9</text>
+    <text x="596" y="381">10</text><text x="596" y="417">11</text><text x="596" y="453">12</text>
+    <text x="596" y="489">13</text><text x="596" y="525">RX</text><text x="596" y="561">TX</text>
+  </g>
+  <g class="lbl" text-anchor="end">
+    <text x="804" y="273">6</text><text x="804" y="309">5</text><text x="804" y="345">4</text>
+    <text x="804" y="381">3</text><text x="804" y="417">2</text><text x="804" y="453">1</text>
+    <text x="804" y="489">3V3</text><text x="804" y="525">GND</text><text x="804" y="561">5V</text>
+  </g>
+  <!-- Подписи SD-модуля -->
+  <g class="lbl" text-anchor="end">
+    <text x="316" y="345">3V3</text><text x="316" y="381">CS</text><text x="316" y="417">MOSI</text>
+    <text x="316" y="453">CLK</text><text x="316" y="489">MISO</text><text x="316" y="525">GND</text>
+  </g>
+  <!-- Подписи микрофона -->
+  <g class="lbl">
+    <text x="1006" y="273">L/R</text><text x="1006" y="309">WS</text><text x="1006" y="345">SCK</text>
+  </g>
+  <g class="lbl" text-anchor="end">
+    <text x="1118" y="273">GND</text><text x="1118" y="309">VDD</text><text x="1118" y="345">SD</text>
+  </g>
+  <!-- Подписи зарядки -->
+  <g font-size="12" font-weight="700" fill="#ffffff">
+    <text x="1124" y="734">OUT−</text><text x="1124" y="774">OUT+</text>
+    <text x="1256" y="734" text-anchor="end">B+</text><text x="1256" y="774" text-anchor="end">B−</text>
+  </g>
+
+  <!-- ================= Обозначения ================= -->
+  <text x="40" y="664" class="h">Обозначения</text>
+  <line class="w v33" x1="40" y1="686" x2="70" y2="686"/><text x="78" y="691" class="t">3V3</text>
+  <line class="w v5" x1="130" y1="686" x2="160" y2="686"/><text x="168" y="691" class="t">5V / плюс аккумулятора</text>
+  <line class="w gnd" x1="340" y1="686" x2="370" y2="686"/><text x="378" y="691" class="t">GND</text>
+  <line class="w i2s" x1="430" y1="686" x2="460" y2="686"/><text x="468" y="691" class="t">I2S (микрофон)</text>
+  <line class="w spi" x1="590" y1="686" x2="620" y2="686"/><text x="628" y="691" class="t">SPI (SD-карта)</text>
+  <use href="#g" x="52" y="702"/><text x="72" y="719" class="t">провод к пину GND ESP</text>
+  <use href="#f33" x="250" y="714"/><text x="304" y="719" class="t">провод к пину 3V3 ESP</text>
+
+  <text x="40" y="752" class="t">1. «1»…«13» у пинов ESP — номера GPIO, как на плате: «4» = GP4. Свободны 1, 2, 3, 7, 8, 9, RX, TX.</text>
+  <text x="40" y="772" class="t">2. В отверстия GND и 5V впаять штырьки. Провода GND микрофона и SD паять к штырьку GND снизу платы.</text>
+  <text x="40" y="792" class="t">3. Пин 3V3 у ESP один: провода к микрофону и SD-модулю — в одно отверстие. 5V на SD не подавать.</text>
+  <text x="40" y="812" class="t">4. «SD» у микрофона — линия данных, не карта памяти. L/R замкнуть на GND прямо на модуле.</text>
+  <text x="40" y="832" class="t">5. Землю модуля питания брать с OUT−, не с B−. Диод 1N5818 — в провод OUT+, полоской к разъёму.</text>
+  <text x="40" y="852" class="t">6. Разъём не защищён от переворота: пометить «+» на разъёме и у пина 5V. Провода I2S и SPI — до 10–12 см.</text>
+  <text x="40" y="872" class="t">7. С диодом можно втыкать USB в ESP при надетом модуле питания: 5 В не уйдут в аккумулятор.</text>
+</svg>
